@@ -1,12 +1,14 @@
+#import sys
+#sys.path.insert(0,'/twitterAuthModule/')
+from TwitterStreaming.twitterAuthModule import twitterAuth as tA
+
 from tweepy.streaming import StreamListener
 from tweepy import Stream
-from twitterAuth import twitterAuth as tA
-
 import os
 import datetime
 
 #Variable to store output files
-outputPath = '..//output//'
+outputPath = '..//SWB//output//'
 
 #Create a directory if it doesn't exist
 if not os.path.isdir(outputPath):
@@ -28,10 +30,10 @@ class StdOutListener(StreamListener):
         print(status)
 
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
 
     #This handles Twitter authetification and the connection to Twitter Streaming API
-    l = StdOutListener()
-    auth = tA.authorization()
-    stream = Stream(auth, l)
-    stream.filter(locations= locationFilterBoxList)
+l = StdOutListener()
+auth = tA.authorization()
+stream = Stream(auth, l)
+stream.filter(locations= locationFilterBoxList)
