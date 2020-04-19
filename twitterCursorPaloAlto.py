@@ -14,7 +14,7 @@ import datetime
 
 
 #Variable to store output files
-outputPath = '..//SWB//outputSample//'
+outputPath = '..//SWB//outputSampleHigh//'
 
 #Create a directory if it doesn't exist
 if not os.path.isdir(outputPath):
