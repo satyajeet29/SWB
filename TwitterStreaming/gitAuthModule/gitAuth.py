@@ -51,9 +51,6 @@ riskString = StringCombine('risks_symptoms')
 elderlyString = StringCombine('elderly')
 sentiments = StringCombine('sentiments')
 misc = StringCombine('miscellaneous')
-print(preventiveString)
-print("\n\n")
-print(riskString)
 
 def returnSearchString():
     return preventiveString, riskString, elderlyString, sentiments, misc
