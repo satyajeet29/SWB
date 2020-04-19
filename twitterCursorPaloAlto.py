@@ -1,7 +1,7 @@
 # Mainly focussed around streaming data on Palo Alto
 
 from TwitterStreaming.twitterAuthModule import twitterAuth as tA
-from TwitterStreaming.gitAuthModule import gitAuth as gA
+#from TwitterStreaming.gitAuthModule import gitAuth as gA
 
 from tweepy.streaming import StreamListener
 from tweepy import Stream
