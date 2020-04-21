@@ -17,7 +17,7 @@ def backline():
 
 
 #Variable to store output files
-outputPath = '..//SWB//outputSample//'
+outputPath = '..//SWB//outputSampleHigh//'
 
 #Create a directory if it doesn't exist
 if not os.path.isdir(outputPath):
@@ -27,7 +27,8 @@ auth = tA.authorization()
 api = API(auth,wait_on_rate_limit=True,wait_on_rate_limit_notify=True)
 
 #Obtain Geo Code Location of Palo Alto California
-places = api.geo_search(query="USA", granularity="country")
+#places = api.geo_search(query="USA", granularity="country")
+places = api.geo_search(query="Sunnyvale,CA", granularity="city")
 place_id = places[0].id
 
 #preventiveString, riskString, elderlyString, sentiments, misc = gA.returnSearchString()

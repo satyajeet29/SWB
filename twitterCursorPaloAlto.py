@@ -12,6 +12,9 @@ from tweepy import API
 import os
 import datetime
 
+def backline():
+    print('\r', end='')                     # use '\r' to go back
+
 
 #Variable to store output files
 outputPath = '..//SWB//outputSampleHigh//'
@@ -40,9 +43,8 @@ count = 0
 
 for tweet in cursor.items():
     count+=1
-    fileName = "tweets_"+str(datetime.datetime.now()).replace('-', '_').replace(' ', '_').replace(':', '_')
+    fileName = "tweets_"+str(datetime.datetime.now().date()).replace('-', '_')
     file = open(outputPath+fileName+'.txt', 'a')
     file.write(str(tweet) + '\n')
-    print(count)
-    print(tweet)
-    print("\n")
+    print(count,end='')
+    backline()

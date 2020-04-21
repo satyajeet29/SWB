@@ -1,4 +1,4 @@
-# Mainly focussed around streaming data on Palo Alto
+# Mainly focussed around streaming data on Washington DC
 
 from TwitterStreaming.twitterAuthModule import twitterAuth as tA
 #from TwitterStreaming.gitAuthModule import gitAuth as gA
@@ -11,13 +11,13 @@ from tweepy import API
 
 import os
 import datetime
-
+import time
 def backline():
     print('\r', end='')                     # use '\r' to go back
 
 
 #Variable to store output files
-outputPath = '..//SWB//outputSample//'
+outputPath = '..//SWB//outputSampleHigh//'
 
 #Create a directory if it doesn't exist
 if not os.path.isdir(outputPath):
@@ -27,7 +27,8 @@ auth = tA.authorization()
 api = API(auth,wait_on_rate_limit=True,wait_on_rate_limit_notify=True)
 
 #Obtain Geo Code Location of Palo Alto California
-places = api.geo_search(query="USA", granularity="country")
+#places = api.geo_search(query="USA", granularity="country")
+places = api.geo_search(query="Washington DC", granularity="city")
 place_id = places[0].id
 
 #preventiveString, riskString, elderlyString, sentiments, misc = gA.returnSearchString()
