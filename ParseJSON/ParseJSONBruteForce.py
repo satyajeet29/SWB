@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 #Variables
-path = "//Users//satyajeetpradhan//SWB_Covid_19//"
+path = "//Users//satyajeetpradhan//SWB_Covid_19//" #<<----Please change it to your file location on local system
 file = "covid19_stream2.json"
 
 #Read data files
@@ -122,6 +122,6 @@ for tweet in tweetArray:
         unparsed.append(tweet)
 
 print("Number of tweets that couldn't be parsed:",'{:,}'.format(len(unparsed)))
-df.to_csv(path+"ParsedTweets.csv")
+df.to_csv(path+"ParsedTweets.csv") #Please change the path to suitable location on your system when the output gets written
 print("Parsed files stored to CSV")
 del df, unparsed
