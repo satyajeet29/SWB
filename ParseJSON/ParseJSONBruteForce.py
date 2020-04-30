@@ -82,6 +82,9 @@ for i in range(0,len(finalCleaningListTweetsR1)-3,4):
 
 print("Number of successful tweets jsoned to dict:",'{:,}'.format(len(tweetArray)))
 
+#5th and final attempt of parsing through remaining string of tweets and utilizing
+#JSONDecodeError to splice tweet string at suitable location in order to be able to
+#convert that into a JSON
 testString = "".join(finalCleaningListTweetsR2)
 splitVal = 0
 counter = 0
@@ -110,7 +113,7 @@ while len(testString) > 0:
 
 print("Number of successful tweets jsoned to dict:",'{:,}'.format(len(tweetArray)))
 
-#Decalre structure of dataframe
+#Declare structure of dataframe
 df = pd.DataFrame(columns = ['text','id_str','lang'])
 
 unparsed =[]
