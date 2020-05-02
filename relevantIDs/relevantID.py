@@ -3,9 +3,11 @@ import numpy as np
 import tweepy
 import time
 np.set_printoptions(precision = 20, suppress = True)
-path = "//Users////SWB_Covid_19//"  #<<--Change path suitably
+path = "//Users//satyajeetpradhan//SWB_Covid_19//" #<<--Change path suitably
 file = "tweet_IDs.csv"
 tweet_IDS = pd.read_csv(path+file)
+tweet_IDS['id'] = tweet_IDS['id'].astype(int)
+
 
 consumer_key = ""
 consumer_secret = ""
@@ -37,7 +39,8 @@ for ids in testID:
 
 totalResponses = 0
 successDict = {}
-
+textDict ={}
+actualTest = []
 #Search and extract for relevant values
 for k, bucket in enumerate(testIDBin):
     try:
@@ -47,6 +50,7 @@ for k, bucket in enumerate(testIDBin):
         print(k,"Count of tweets: ",len(test))
         successDict[k] = len(test)
         for string in test:
+            textDict[string.id] = string.text
             file = open(path+'idBasedOutput.txt', 'a')
             file.write(str(string) + '\n')
     except:
@@ -70,3 +74,10 @@ print("Max success rate in 100 count size bin: ",d1.max())
 print("Mean success rate in 100 count size bin: ",d1.mean())
 print("Min success rate in 100 count size bin: ",d1.min())
 print("-------------------------------------------------------------")
+
+dfText = pd.DataFrame(list(textDict.items()),columns = ['id','text'])
+tweet_IDS = tweet_IDS.merge(dfText, on='id', how='left')
+
+#Write output with text retrieved
+tweet_IDS.to_csv(path+"outputTextIDs.csv")
+del tweet_IDS
