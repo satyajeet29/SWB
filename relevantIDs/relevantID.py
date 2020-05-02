@@ -2,20 +2,15 @@ import pandas as pd
 import numpy as np
 import tweepy
 import time
+from TwitterStreaming.twitterAuthModule import MichaelTwitterAuth as mTA
+
 np.set_printoptions(precision = 20, suppress = True)
 path = "//Users//satyajeetpradhan//SWB_Covid_19//" #<<--Change path suitably
 file = "tweet_IDs.csv"
 tweet_IDS = pd.read_csv(path+file)
 tweet_IDS['id'] = tweet_IDS['id'].astype(int)
 
-
-consumer_key = ""
-consumer_secret = ""
-access_token = ""
-access_token_secret = ""
-
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+auth = mTA.authorization()
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 #break tweets into buckets of 100 tweets in each bucket, note last bucket might have less tweets
@@ -47,7 +42,7 @@ for k, bucket in enumerate(testIDBin):
         #print("Trying: ",k)
         test = api.statuses_lookup(bucket)
         #print(test)
-        print(k,"Count of tweets: ",len(test))
+        print(k,'\t',"Count of tweets: ",len(test))
         successDict[k] = len(test)
         for string in test:
             textDict[string.id] = string.text
