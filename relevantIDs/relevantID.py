@@ -74,5 +74,5 @@ dfText = pd.DataFrame(list(textDict.items()),columns = ['id','text'])
 tweet_IDS = tweet_IDS.merge(dfText, on='id', how='left')
 
 #Write output with text retrieved
-tweet_IDS.to_csv(path+"outputTextIDs.csv")
+tweet_IDS.to_csv(path+"outputTextIDsR1.csv")
 del tweet_IDS
